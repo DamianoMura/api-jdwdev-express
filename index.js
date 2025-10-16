@@ -7,11 +7,15 @@ const app = express();
 app.use(express.static("public"));
 app.use(express.json());
 //express auth  
-import { ExpressAuth } from "@auth/express"
-import GitHub from "@auth/express/providers/github"
+const  {ExpressAuth}  = require("@auth/express")
+const {GitHub} = require("@auth/express/providers/github")
+app.set('trust proxy', true)
 app.use("/auth/*", ExpressAuth({ providers: [ GitHub ] }))
-
-
+app.use(authSession)
+app.get("/", (req, res) => {
+  const { session } = res.locals
+  res.render("index", { user: session?.user })
+})
 
 //bottom part of the app
 app.listen(API_PORT||3000, () => {
