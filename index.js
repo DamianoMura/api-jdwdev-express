@@ -6,8 +6,10 @@ const express = require("express");
 const app = express();
 app.use(express.static("public"));
 app.use(express.json());
-
-
+//express auth  
+import { ExpressAuth } from "@auth/express"
+import GitHub from "@auth/express/providers/github"
+app.use("/auth/*", ExpressAuth({ providers: [ GitHub ] }))
 
 
 
@@ -16,4 +18,5 @@ app.listen(API_PORT||3000, () => {
 			console.log(`Starting up server ${APP_NAME}...`)
 			console.log(`starting up dependencies:`,api_package.dependencies)
       console.log(`listening on port ${API_PORT}`)
+			console.log(app)
 		});
