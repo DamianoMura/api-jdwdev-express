@@ -1,0 +1,13 @@
+# API JDWDEV.IT
+
+"dependencies": {
+"cors": "^2.8.5",
+"dotenv": "^17.2.3",
+"express": "^5.1.0",
+"mysql2": "^3.15.1",
+"nodemailer": "^7.0.9"
+}
+
+# STEP 1:
+
+defining credentials fo
